@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const AddUser = () => {
 
+    const hosting = process.env.REACT_APP_BACKEND_JAVA
+
    const [user, setUser] = useState({
     name:"",
     username:"",
@@ -21,7 +23,7 @@ const AddUser = () => {
 
     e.preventDefault()
 
-    await axios.post("http://localhost:8080/user",user)
+    await axios.post(`${hosting}/user`,user)
     navigate('/')
    }
 

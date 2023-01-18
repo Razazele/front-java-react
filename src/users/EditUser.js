@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 const EditUser = () => {
 
+    const hosting = process.env.REACT_APP_BACKEND_JAVA
 
 
     const {id} = useParams()
@@ -31,12 +32,12 @@ const EditUser = () => {
 
     e.preventDefault()
 
-    await axios.put(`http://localhost:8080/user/${id}`,user)
+    await axios.put(`${hosting}/user/${id}`,user)
     navigate('/')
    }
 
    const loadUser =  async () => {
-    const result = await axios.get(`http://localhost:8080/user/${id}`)
+    const result = await axios.get(`${hosting}/user/${id}`)
     setUser(result.data)
    }
 
