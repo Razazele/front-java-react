@@ -9,7 +9,7 @@ const Home = () => {
 
   const [users, setUsers] = useState([])
   const {id} = useParams();
-
+  const idqla= id
 
 
   const loadUsers=async () => {
@@ -19,14 +19,14 @@ const Home = () => {
   }
 
   const deleteUser = async (id) => {
-    await axios.delete(`${hosting}/user/${id}`)
+    await axios.delete(`${hosting}/user/${idqla}`)
     loadUsers()
   }
 
   useEffect(() => {
     loadUsers()
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   return (
