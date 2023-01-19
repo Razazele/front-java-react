@@ -10,11 +10,7 @@ const Home = () => {
   const [users, setUsers] = useState([])
   const {id} = useParams();
 
-  useEffect(() => {
-    loadUsers()
 
-
-  },[])
 
   const loadUsers=async () => {
     const result = await axios.get(`${hosting}/users`)
@@ -26,6 +22,12 @@ const Home = () => {
     await axios.delete(`${hosting}/user/${id}`)
     loadUsers()
   }
+
+  useEffect(() => {
+    loadUsers()
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <div className='container'>
@@ -45,8 +47,8 @@ const Home = () => {
     {
 
         users.map((user,index) => {
-           return <tr key={index}>
-            <th scope="row" key={index}>{index+1}</th>
+           return <tr key={user.id}>
+            <th scope="row" key={user.id}>{index+1}</th>
             <td>{user.name}</td>
             <td>{user.username}</td>
             <td>{user.email}</td>

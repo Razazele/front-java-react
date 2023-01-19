@@ -25,7 +25,14 @@ const EditUser = () => {
 
 
    useEffect(() => {
+
+
+    const loadUser =  async () => {
+        const result = await axios.get(`${hosting}/user/${id}`)
+        setUser(result.data)
+       }
     loadUser()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
    const onSubmit= async (e) => {
@@ -36,10 +43,7 @@ const EditUser = () => {
     navigate('/')
    }
 
-   const loadUser =  async () => {
-    const result = await axios.get(`${hosting}/user/${id}`)
-    setUser(result.data)
-   }
+
 
   return (
     <div className='container' >
